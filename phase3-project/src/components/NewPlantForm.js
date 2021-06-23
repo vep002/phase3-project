@@ -5,7 +5,7 @@ const NewPlantForm = () => (
         <section className="add-plant">
         <h2>add a plant to your garden</h2>
             <label for="plant-name">plant name: </label>
-            <input id="plant-name"placeholder="username"></input>
+            <input type="select" id="plant-name"placeholder="plant name"></input>
             <br />
             <label for="quantity">quantity: </label>
             <input id="quantity"type="number" min="1" max="50"></input>

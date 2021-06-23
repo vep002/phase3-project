@@ -1,0 +1,16 @@
+
+
+
+
+
+
+
+
+
+Post request: {
+    conditionals: 
+    1. login functionality: if the user name and password == a username and password already in the database, then we want to route to that users homepage.
+    if the user name or password don't alreadt exist, then we throw an error => "check again or create an account"
+    2. sign up functionality: if the username and password == a username and password already in the database, throw an error => "choose a new username". 
+    if they don't, then append to the database
+}

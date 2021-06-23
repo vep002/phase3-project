@@ -1,10 +1,10 @@
 import React from 'react';
-import logo from '../images/logo.png';
+import Logo from '../images/logo.png';
 
 const Header = () => (
   <header>
     <h1>My Garden Center</h1>
-    <img scr={logo} alt="My Garden Center Logo"></img> 
+    <img scr={Logo} alt="My Garden Center Logo"></img> 
   </header>
 );
 

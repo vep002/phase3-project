@@ -1,11 +1,12 @@
 import React from 'react';
 import PlantImg from '../images/plant.png';
 
-const Plant = () => (
+// 4.c) taking the plant info passed as props and generating plant content.
+const Plant = (props) => (
   <div className="plant">
-    <img scr={PlantImg} alt="Drawing of Houseplant"></img> 
-    <h3>Plant name</h3>
-    <p>here are some care instructions for the plant!</p>
+    <img scr={props.image} alt="Drawing of Houseplant"></img> 
+    <h3>{props.common_name}</h3>
+    <p>{props.care_instructions}</p>
     <button>X</button>
   </div>
 );

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Switch, Route, withRouter, Link} from 'react-router-dom';
+import {Switch, withRouter, Route, Link} from 'react-router-dom';
 
 //App components
 import Header from './components/Header';
@@ -20,11 +20,11 @@ setUser = (user) => {
     username: user.username,
     gardens: user.gardens
   })
-  this.props.history.push("gardens")
+  this.props.history.push("/gardens")
 }
 
 deletePlantFromState = (plant) => {
-  let gardenThatContainsThePlant = this.state.gardens.find(course => {
+  let gardenThatContainsThePlant = this.state.gardens.find(garden => {
     return garden.id === plant.garden_id
   })
 
@@ -50,55 +50,54 @@ deletePlantFromState = (plant) => {
   })
 }
 
-// addPlantToGarden = (newPlant) => {
+addPlantToGarden = (newPlant) => {
+  // 3.a) find the garden that includes the newly added plant 
 
-//   // 3.a) find the garden that includes the newly added plant 
+  let gardenThatContainsThePlant = this.state.gardens.find(garden => {
+    return garden.id === newPlant.garden_id
+  })
 
-//   let gardenThatContainsThePlant = this.state.gardens.find(garden => {
-//     return garden.id === newPlant.garden_id
-//   })
-
-//   // 3.b) add the new plant to the garden's plant array 
+  // 3.b) add the new plant to the garden's plant array 
   
-//   let newArrayOfPlants = [...gardenThatContainsThePlant.plants, newPlant]
+  let newArrayOfPlants = [...gardenThatContainsThePlant.plants, newPlant]
 
-//   // 3.c) create a copy of the garden array and add in 
-//   // the new plant array which includes the newly added plant
+  // 3.c) create a copy of the garden array and add in 
+  // the new plant array which includes the newly added plant
 
-//   let copyOfGarden = {
-//     ...gardenThatContainsThePlant,
-//     plants: newArrayOfPlants
-//   }
+  let copyOfGarden = {
+    ...gardenThatContainsThePlant,
+    plants: newArrayOfPlants
+  }
 
-//   // 3.d) create a copy of all gardens associated with the user, 
-//   // map over gardens saved in state, & see if the id of the garden 
-//   // saved in state matches the id of the garden we just updated 
-//   // with the new plant. 
-//   // If they do match, return the updated garden's plant array. 
-//   // If they don't match, returning the original garden's plant array.
+  // 3.d) create a copy of all gardens associated with the user, 
+  // map over gardens saved in state, & see if the id of the garden 
+  // saved in state matches the id of the garden we just updated 
+  // with the new plant. 
+  // If they do match, return the updated garden's plant array. 
+  // If they don't match, returning the original garden's plant array.
 
-//   let theCopyOfAllGardens = this.state.gardens.map(garden => {
-//     if(garden.id === copyOfGarden.id){
-//       return copyOfGarden
-//     } else {
-//       return garden
-//     }
-//   })
+  let theCopyOfAllGardens = this.state.gardens.map(garden => {
+    if(garden.id === copyOfGarden.id){
+      return copyOfGarden
+    } else {
+      return garden
+    }
+  })
 
-//   // 3.e) Finally, set the state of gardens to be the copyOfAllGardens,
-//   // which gets passed down as props to new plant form and home
+  // 3.e) Finally, set the state of gardens to be the copyOfAllGardens,
+  // which gets passed down as props to new plant form and home
 
-//   this.setState({
-//     gardens: theCopyOfAllGardens
-//   })
-// }
+  this.setState({
+    gardens: theCopyOfAllGardens
+  })
+}
 
-// // 4.a) Create the GardenContainer component, which is a user's garden, 
-// // sending down the garden as props. See GardenContainer.js for next step.
+// 4.a) Create the GardenContainer component, which is a user's garden, 
+// sending down the garden as props. See GardenContainer.js for next step.
 
-// arrayOfGardens = this.state.gardens.map(garden => {
-//   return <GardenContainer key={garden.id} garden={garden}/>
-// })
+arrayOfGardens = this.state.gardens.map(garden => {
+  return <GardenContainer key={garden.id} garden={garden}/>
+})
 
 decideWhichGardenToRender = (routerProps) => {
   //return value will be rendered to page
@@ -108,7 +107,7 @@ decideWhichGardenToRender = (routerProps) => {
   })
 
   if(foundGarden){
-    return <Garden 
+    return <GardenContainer 
               course={foundGarden} 
               deletePlantFromState={this.deletePlantFromState} 
           />
@@ -121,15 +120,16 @@ render(){
   return(
   <section className="body">
     <Header />
-    <Link to="/login">Login</Link>
-    <Link to="/gardens">Gardens</Link>
 
-    <Switch>
+      <Link to="/login">Login</Link>
+      <Link to="/gardens">Gardens</Link>
+
+      <Switch>
       <Route exact path="/login">
         <Login setUser={this.setUser} />
       </Route>
       <Route exact path="/gardens">
-        <GardenContainer gardens={this.state.gardens} deletePlantFromState={this.deletePlantFromState} />
+        <GardenContainer garden={this.state.gardens} deletePlantFromState={this.deletePlantFromState} addPlantToGarden={this.addPlantToGarden} />
       </Route>
       <Route exact path="/gardens/:id" render={this.decideWhichGardenToRender} />
     </Switch>

@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import PlantImg from '../images/plant.png';
 
 class Plant extends Component {
 
@@ -17,12 +16,12 @@ class Plant extends Component {
   // generating plant content.
 
   render() {
-    let {name} = this.props.plant
+    let {common_name, care_instructions, image} = this.props.plant
     return (
     <div className="plant">
-      <img scr={this.props.image} alt={name}></img> 
-      <h3>{name}</h3>
-      <p>{this.props.care_instructions}</p>
+      <img scr={require("../images/snake_plant.png")} alt={common_name}></img>
+      <h3>{common_name}</h3>
+      <p>{care_instructions}</p>
       <button onClick={this.handleDelete}>
         X
       </button>

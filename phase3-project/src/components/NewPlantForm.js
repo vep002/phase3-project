@@ -35,30 +35,20 @@ handleSubmit = (e) => {
     e.preventDefault()
 
     // 2.a) A Post request is sent to the /plants resource on the backend
-
     fetch("http://localhost:9393/plants", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-
-    // 2.b) the body of the POST request includes plant_id, garden_id, 
-    // and quantity (all in state, set from the previous step. 
-    // See backend for next step.)
-
       body: JSON.stringify({
-       plant_id: this.state.plant_id,
-       quantity: this.state.quantity,
-       garden_id:this.state.garden_id
+       plant_id: parseInt(this.state.plant_id),
+       quantity: parseInt(this.state.quantity),
+       garden_id: parseInt(this.state.garden_id)
       })
     })
-
-    // 2.g) Recieves new plant information from the backend and runs a
-    // function to add the plant to the users garden on the front end 
-    // (passed down as props from App.js). See App.js for next steps.
-
     .then(res=> res.json())
     .then ((newPlant) => {
+        console.log(newPlant)
       this.props.addPlantToGarden(newPlant)
     })
 }
@@ -85,10 +75,12 @@ render () {
                 name="plant_id" 
                 value={this.state.plant_id} 
                 onChange={this.handleChange}>
+                    <option value="select a plant" selected>Plant Name</option>
+
                 {this.state.plantArr.map((plant)=>{
                     return (
-                    <option 
-                        key={plant.id} value={plant.id} >{plant.common_name}
+                    <option key={plant.id} value={plant.id} >
+                        {plant.common_name}
                     </option>
                     )
                 })}
@@ -104,10 +96,10 @@ render () {
 
             <select 
                 id="garden-name"
-                placeholder="garden name" 
                 name="garden_id" 
                 value={this.state.garden_id} 
                 onChange={this.handleChange}>
+                    <option value="select a garden" selected>Garden Name</option>
                 {this.props.gardens.map((garden)=>{
                     return (
                     <option 
@@ -131,8 +123,9 @@ render () {
                 onChange={this.handleChange} 
                 value={this.state.quantity}>
             </input>
+            <input class="add-plant" type="submit" value="add new plant" />    
         </form>
-        <input class="add-plant" type="submit" value="add new plant" />    
+        
     </article>
     )}
 };

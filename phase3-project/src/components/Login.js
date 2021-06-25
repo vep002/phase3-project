@@ -1,33 +1,58 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, {Component} from 'react';
 
-const Login = () => (
-  <article className="container">
+
+class Login extends Component {
+
+state = {
+  username: "",
+  password: ""
+}
+
+handleChange = (e) => {
+  this.setState({
+      [e.target.name]: e.target.value
+  })
+}
+
+handleSubmit = (e) => {
+  e.preventDefault()
+  fetch("http://localhost:9393/login", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json"
+    },
+    body: JSON.stringify({
+      username: this.state.username,
+      password: this.state.password
+    })
+  })
+  .then(res => res.json())
+  .then ((potentialUser) => {
+    if (potentialUser.error) {
+      alert(potentialUser.error)
+    } else {
+      this.props.setUser(potentialUser)
+    }
+  })
+}
+
+render (){
+  return(
+  <article className="container" onSubmit={this.handleSubmit}>
     <section className="login">
         <h2>log in</h2>
-        <div className="login">
-            <label for="username">username: </label>
-            <input id="username"placeholder="username"></input>
+        <form className="login">
+            <label>username: </label>
+            <input id="username" placeholder="username" name="username" value={this.state.username} onChange={this.handleChange} ></input>
             <br />
-            <label for="pwd">password: </label>
-            <input id="pwd" placeholder="password" type="password"></input>
+            <label>password: </label>
+            <input id="pwd" name="password" type="password" value={this.state.password} onChange={this.handleChange} ></input>
             <br />
-            <button className="login"type="submit"><NavLink to="/home">log in</NavLink></button>
-        </div>
+            <input className="login" type="submit" value="login"/>
+        </form>
     </section>
-    {/* <section className="signup">
-        <h2>sign up</h2>
-        <div>
-            <label for="new-username">username: </label>
-            <input id="new-username"placeholder="username"></input>
-            <br />
-            <label for="new-pwd">password: </label>
-            <input id="new-pwd" placeholder="password" type="password"></input>
-            <br />
-            <button className="login" type="submit">sign up</button>
-        </div>
-    </section> */}
   </article>
-);
+  )}
+}
 
 export default Login;

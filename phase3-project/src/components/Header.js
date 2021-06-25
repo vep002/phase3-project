@@ -1,10 +1,9 @@
 import React from 'react';
-import Logo from '../images/logo.png';
 
 const Header = () => (
   <header>
     <h1>My Garden Center</h1>
-    <img scr={Logo} alt="My Garden Center Logo"></img> 
+    <img scr={('https://i.ibb.co/J3YFNsJ/logo.png')} alt="My Garden Center Logo"></img> 
   </header>
 );
 

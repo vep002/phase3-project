@@ -1,0 +1,123 @@
+/* import Google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Quicksand', 'sans-serif';
+}
+
+body {
+  background-image: url("images/background.png");
+  background-size: 100vw 50vw; 
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center bottom;  
+}
+
+/* header styling */
+
+header {
+  background-color: #81AE6F;
+  color: #ffffff;
+  padding: 1vh 2vw;
+  border-radius: 10px;
+  position: relative;
+  width: 98vw;
+  margin: auto;
+}
+
+header h1 {
+  font-weight: 500;
+  font-size: 5vh;
+}
+
+header img {
+  height: 7vw;
+  float: right;
+  position: absolute;
+  right: 3vw;
+  top: 0;
+}
+
+/* form styling */
+.container {
+  text-align: center;
+  color: #0E0906;
+}
+
+.container section {
+  border: .33vw solid #0E0906;
+  border-radius: 10px;
+  background-color: #ffffff;
+  margin: 5vw;
+  width: 25vw;
+  display: inline-block;
+  padding: 2vw;
+}
+
+.container input {
+  margin: .75vw;
+  width: 6rem;
+  padding: .25vw;
+  border: 2px solid #0E0906;
+  border-radius: 10px;
+}
+
+article#plant-form {
+  border: .33vw solid #0E0906;
+  border-radius: 10px;
+  background-color: #ffffff;
+  margin: 5vw auto;
+  width: 25vw;
+  padding: 2vh 2vw;
+}
+
+section.add-plant {
+  background-color: #C6DABE;
+  width: 50vw;
+  height: 30vh;
+  padding: 6vw;
+}
+
+button {
+  display: block;
+  margin: 3vh auto;
+  background-color: #C6DABE;
+  border: 2px solid #0E0906;
+  border-radius: 10px;
+}
+
+/* home page styling */
+
+article#home-page {
+  border: .33vw solid #0E0906;
+  border-radius: 10px;
+  background-color: #ffffff;
+  margin: 5vw auto;
+  width: 75vw;
+  padding: 1vh 2vw;
+}
+
+section.garden {
+  width: 50vw;
+  margin-top: 3vh;
+  margin-bottom: 2vh;
+}
+
+div.plant {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-bottom: 2px solid #0E0906;
+  margin-top: 2vh;
+  padding: 25px;
+  text-align: left;
+}
+
+div.plant-details {
+  width: 30vw;
+}
+
+div.plant img {
+  width: 100px;
+}

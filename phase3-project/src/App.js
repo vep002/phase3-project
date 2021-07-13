@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Switch, withRouter, Route, Link} from 'react-router-dom';
+import './App.css'
 
 //App components
 import Header from './components/Header';

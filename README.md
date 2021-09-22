@@ -15,3 +15,14 @@ Live demo coming soon
 - run `shotgun` to start the server
 - git clone this repository
 - run `npm start`
+
+<hr>
+
+<p>
+<b>Built with 💖 using :</b> 
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" height=25px width=25px/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height=25px width=25px/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-original.svg" height=25px width=25px/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg" height=25px width=25px>
+</p>
+

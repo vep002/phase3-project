@@ -14,6 +14,7 @@ Live demo: https://res.cloudinary.com/dz2jdgus7/video/upload/v1633459325/my_gard
 - run `bundle install` to install dependencies
 - run `shotgun` to start the server
 - git clone this repository
+- run `npm install` to to install dependencies
 - run `npm start`
 
 
